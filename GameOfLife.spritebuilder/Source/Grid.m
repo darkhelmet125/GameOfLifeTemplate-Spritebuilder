@@ -55,13 +55,32 @@ float _cellHeight;
             //shorthand for accessing an array in an array
             _gridArray[i][j] = creature;
             
-            //make creatures visible for testing
-            //remove later
-            creature.isAlive = YES;
             x += _cellWidth;
         }
         y += _cellHeight;
     }
+}
+
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    //get x,y coords of the touch
+    CGPoint touchLocation = [touch locationInNode:self];
+    
+    //get creature at the location
+    Creature *creature = [self creatureForTouchPosition: touchLocation];
+    
+    //invert creature's state
+    creature.isAlive = !creature.isAlive;
+}
+
+-(Creature*)creatureForTouchPosition:(CGPoint)touchPosition {
+    //get row and column touched, return creature in that cell
+    int row = 0;
+    int column = 0;
+    
+    row  = touchPosition.y / _cellHeight;
+    column = touchPosition.x / _cellWidth;
+    
+    return _gridArray[row][column];
 }
 
 @end
