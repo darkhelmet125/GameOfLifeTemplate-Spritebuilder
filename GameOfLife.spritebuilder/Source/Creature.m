@@ -25,7 +25,7 @@
     //using an @property automatically creates a variable with a leading underscore
     _isAlive = newState;
     
-    self.isVisible = _isAlive;
+    self.visible = _isAlive;
 }
 
 @end
