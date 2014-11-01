@@ -146,9 +146,6 @@ float _cellHeight;
             }
             else if (currentCreature.livingNeighbors <= 1 || currentCreature.livingNeighbors >= 4) {
                 currentCreature.isAlive = FALSE;
-                if (numAlive > 0) {
-                    --numAlive;
-                }
             }
         }
     }
